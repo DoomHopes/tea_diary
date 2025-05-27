@@ -1,0 +1,7 @@
+{
+    "api_scheme": "https",
+    "api_host": "example.com",
+    "api_prefix": "/api",
+    "api_port": ""
+  }
+  
