@@ -12,6 +12,10 @@ dependencies:
   flutter_riverpod: ^2.6.1
   shared_preferences: ^2.5.3
   http: ^1.4.0
+  hex_color:
+    git:
+      url: https://github.com/DoomHopes/hex_color.git
+      ref: main
 
 dev_dependencies:
   flutter_test:

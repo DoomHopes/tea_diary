@@ -96,6 +96,15 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  hex_color:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: main
+      resolved-ref: c8fb52467549b242aa64becc95dd3bcc85d030c0
+      url: "https://github.com/DoomHopes/hex_color.git"
+    source: git
+    version: "0.0.1"
   http:
     dependency: "direct main"
     description:
