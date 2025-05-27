@@ -7,9 +7,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AppConfig {
   Map<String, dynamic> _variables = {};
   late SharedPreferences _prefs;
-  String _currentEnv = 'live';
+  String _currentEnv = 'dev';
   static const String _envKey = 'selected_env';
-  final ValueNotifier<String> _envNotifier = ValueNotifier('live');
+  final ValueNotifier<String> _envNotifier = ValueNotifier('dev');
 
   AppConfig._internal();
 
@@ -22,7 +22,7 @@ class AppConfig {
 
   Future<void> _loadPreferences() async {
     _prefs = await SharedPreferences.getInstance();
-    _currentEnv = _prefs.getString(_envKey) ?? 'live';
+    _currentEnv = _prefs.getString(_envKey) ?? 'dev';
     _envNotifier.value = _currentEnv;
   }
 

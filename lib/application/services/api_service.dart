@@ -78,8 +78,9 @@ class ApiService extends ChangeNotifier {
     Uri uri = Uri(
       scheme: AppConfig.get('api_scheme'),
       host: AppConfig.get('api_host'),
+      port: AppConfig.get('api_port'),
       path: AppConfig.get('api_prefix') + endpoint,
-      queryParameters: queryParameters,
+      queryParameters: queryParameters.isNotEmpty ? queryParameters : null,
     );
 
     if (kDebugMode) {
@@ -92,7 +93,9 @@ class ApiService extends ChangeNotifier {
       if (kDebugMode) {
         print(['response', response]);
       }
+      
       final data = json.decode(response.body) as Map<String, dynamic>;
+
       if (data.containsKey('exception')) {
         ref.read(snackBarService).showMessage("API error.", error: "An error occurred while requesting data");
       } else if (data.containsKey('message') && data['message'] == "Unauthenticated.") {
@@ -209,8 +212,7 @@ class ApiService extends ChangeNotifier {
     return null;
   }
 
-  Future<Map<String, dynamic>?> optionsRequest(String endpoint,
-      {Map<String, String>? headers, bool tokenRequired = true}) async {
+  Future<Map<String, dynamic>?> optionsRequest(String endpoint, {Map<String, String>? headers, bool tokenRequired = true}) async {
     if (await hasInternetAccess() == false) {
       return null;
     }

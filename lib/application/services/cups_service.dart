@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tea_diary/application/services/api_service.dart';
+import 'package:tea_diary/application/services/snack_bar_service.dart';
 
 final cupsService = ChangeNotifierProvider<CupsService>((ref) => CupsService(ref: ref));
 
@@ -15,6 +17,14 @@ class CupsService extends ChangeNotifier {
   int _theNumberOfCups = 0;
 
   int get theNumberOfCups => _theNumberOfCups;
+
+  void testMessage() async {
+    final data = await ref.read(apiService).getRequest('hello', {}, tokenRequired: false);
+
+    if (data != null) {
+      ref.read(snackBarService).showMessage(data['message']);
+    }
+  }
 
   void add(int cups) {
     _theNumberOfCups += cups;

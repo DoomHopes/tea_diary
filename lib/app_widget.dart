@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tea_diary/application/globals.dart';
 import 'package:tea_diary/application/routes/routes.dart';
 import 'package:tea_diary/modules/auth/pages/auth_page.dart';
 
@@ -12,6 +13,9 @@ class TeaDiaryApp extends StatelessWidget {
       home: AuthPage(),
       initialRoute: '/home',
       onGenerateRoute: onGenerateRoute,
+      scaffoldMessengerKey: snackBarKey,
+      navigatorKey: navigatorKey,
+
     );
   }
 }

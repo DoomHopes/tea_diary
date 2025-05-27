@@ -14,6 +14,7 @@ class _FloatingActionButtonState extends ConsumerState<CustomFloatingActionButto
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: () {
+        ref.read(cupsService).testMessage();
         ref.read(cupsService).add(1);
       },
       child: Icon(
